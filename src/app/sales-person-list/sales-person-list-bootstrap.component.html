@@ -1,0 +1,28 @@
+<p>sales-person-list works!</p>
+
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <td>name</td>
+      <td>lastname</td>
+      <td>email</td>
+      <td>sales volume</td>
+      <td>Met Quota</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let sale of salePersonList"
+      [ngClass]="{ highlight: sale.salesVolume > 2000 }"
+    >
+      <td>{{ sale.firstName }}</td>
+      <td>{{ sale.lastName }}</td>
+      <td>{{ sale.email }}</td>
+      <td>{{ sale.salesVolume | currency : "USD" }}</td>
+      <td>
+        <div *ngIf="sale.salesVolume > 2000; else myElseBlock">Yes</div>
+        <ng-template #myElseBlock>NO</ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>
